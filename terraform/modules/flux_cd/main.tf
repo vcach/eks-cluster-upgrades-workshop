@@ -21,7 +21,7 @@ resource "kubernetes_namespace" "flux_system" {
 resource "helm_release" "flux2-sync" {
   name       = "flux-system"
   namespace   = var.namespace
-  repository = "https://artifacthub.io/packages/helm/fluxcd-community/flux2-sync"
+  repository = "https://fluxcd-community.github.io/helm-charts"
   chart      = "flux2-sync"
 
   set {
@@ -59,9 +59,8 @@ resource "helm_release" "flux2-sync" {
 resource "helm_release" "flux2" {
   name       = "flux2"
   namespace   = var.namespace
-  repository = "https://artifacthub.io/packages/helm/fluxcd-community/flux2"
+  repository = "ghcr.io/fluxcd-community/charts/flux2:2.1.1"
   chart      = "flux2"
-  version    = "v2.1.1"
 
   set {
     name = "helmController.create"
